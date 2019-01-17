@@ -1,0 +1,26 @@
+extends layout
+
+block content
+    a(href='/')  back to homepage
+    h1 List users
+    div
+        form(action='/users/add',method='post')
+            label(for='name') name
+                input(id='name',type='text',value='',placeholder='name',autocomplete='off',name='name')
+            label(for='gender') gender
+                input(id='gender',type='text',value='',placeholder='gender',autocomplete='off',name='gender')
+            
+            input(type='submit',value='Add user',data-transition='fade', data-theme='c')
+    table
+        thead
+        tr 
+            th Name 
+            th gender 
+            th profile
+        tbody
+        each user, i in users
+            tr
+            td #{user.name}
+            td #{user.gender}
+            td 
+                a(href='/users/profile/'+ user.id) view
